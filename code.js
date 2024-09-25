@@ -1,20 +1,25 @@
 function divideAndConquerSum(a) {
-    if (a.length == 1) {
+    if (a.length == 1) { // checks if the array has only one element
         return a[0];
     }
-    if (a.length == 0) {
+    if (a.length == 0) { // checks if the array is empty
         return 0;
+    }
+    if (a.length == 2) { // checks if the array has two elements
+        return a[0] + a[1];
     }
     const size = a.length;
     
-    const subArrLength = Math.floor(size / 3);
-    const leftEnd = subArrLength;
-    const middleEnd = 2 * subArrLength;
+    const subArrLength = Math.floor(size / 3); // divides the array into three subarrays
+    const leftEnd = subArrLength; // finds the end of the first subarray
+    const middleEnd = 2 * subArrLength; // finds the end of the second subarray
 
-    const leftSubarray = a.slice(0, leftEnd);
+    // slices the array into three subarrays using the start and end points from above
+    const leftSubarray = a.slice(0, leftEnd); 
     const middleSubarray = a.slice(leftEnd, middleEnd);
     const rightSubarray = a.slice(middleEnd);
 
+    // calls recursively on the three subarrays to further divide them
     const leftArrSum = divideAndConquerSum(leftSubarray);
     const middleArrSum = divideAndConquerSum(middleSubarray);
     const rightArrSum = divideAndConquerSum(rightSubarray);
